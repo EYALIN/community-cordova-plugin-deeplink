@@ -1,0 +1,19 @@
+{
+  "name": "community-cordova-plugin-deeplink",
+  "version": "1.0.0",
+  "main": "./types/index.d.ts",
+  "types": "./types/index.d.ts",
+  "readme": "README.md",
+  "repository": "EYALIN/community-cordova-plugin-deeplink/tree/master",
+  "homepage": "https://github.com/EYALIN/community-cordova-plugin-deeplink/tree/master",
+  "funding": "https://github.com/sponsors/EYALIN",
+  "bugs": "https://github.com/EYALIN/community-cordova-plugin-deeplink/issues",
+  "cordova": {
+    "id": "community-cordova-plugin-deeplink",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "description": "A Cordova plugin for handling deep links (App Links, Universal Links, and custom URI schemes)"
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="community-cordova-plugin-deeplink"
+        version="1.0.0">
+    <name>Cordova Plugin Deeplink</name>
+    <description>A Cordova plugin for handling deep links (App Links, Universal Links, and custom URI schemes)</description>
+    <license>MIT</license>
+    <keywords>cordova,plugin,deeplink,applinks,universallinks,uri,scheme</keywords>
+    <repo>https://github.com/eyalin/community-cordova-plugin-deeplink.git</repo>
+    <issue>https://github.com/eyalin/community-cordova-plugin-deeplink/issues</issue>
+
+    <preference name="URL_SCHEME" />
+    <preference name="DEEPLINK_HOST" default="open" />
+
+    <platform name="android">
+        <js-module src="www/deeplink.js" name="DeeplinkPlugin">
+            <runs/>
+            <clobbers target="DeeplinkPlugin"/>
+        </js-module>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DeeplinkPlugin">
+                <param name="android-package" value="deeplinkplugin.DeeplinkPlugin"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity[@android:name='MainActivity']">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="$URL_SCHEME" android:host="$DEEPLINK_HOST" />
+            </intent-filter>
+        </config-file>
+
+        <source-file src="src/android/DeeplinkPlugin.java" target-dir="src/deeplinkplugin"/>
+    </platform>
+
+    <platform name="ios">
+        <js-module src="www/deeplink.js" name="DeeplinkPlugin">
+            <runs/>
+            <clobbers target="DeeplinkPlugin"/>
+        </js-module>
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="DeeplinkPlugin">
+                <param name="ios-package" value="DeeplinkPlugin"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLName</key>
+                    <string>$PACKAGE_NAME.deeplink</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$URL_SCHEME</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+
+        <header-file src="src/ios/DeeplinkPlugin.h"/>
+        <source-file src="src/ios/DeeplinkPlugin.m"/>
+    </platform>
+</plugin>
