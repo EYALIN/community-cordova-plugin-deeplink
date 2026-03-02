@@ -1,6 +1,6 @@
 {
   "name": "community-cordova-plugin-deeplink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./types/index.d.ts",
   "types": "./types/index.d.ts",
   "readme": "README.md",

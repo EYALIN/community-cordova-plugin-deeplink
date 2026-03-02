@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="community-cordova-plugin-deeplink"
-        version="1.0.0">
+        version="1.0.1">
     <name>Cordova Plugin Deeplink</name>
     <description>A Cordova plugin for handling deep links (App Links, Universal Links, and custom URI schemes)</description>
     <license>MIT</license>
@@ -51,7 +51,7 @@
             </feature>
         </config-file>
 
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+        <config-file target="App/App-Info.plist" parent="CFBundleURLTypes">
             <array>
                 <dict>
                     <key>CFBundleURLName</key>
